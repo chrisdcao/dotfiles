@@ -1,1 +1,2 @@
-alias vimt='vim -c "NERDTree"'
+alias "vimt"="vim -c 'NERDTree'"
+alias "commat"="git add -A; git commit"
