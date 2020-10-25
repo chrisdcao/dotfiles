@@ -1,0 +1,299 @@
+"-------------COLORS-------------"
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+syntax on
+"let ayucolor="dark"
+colorscheme ayu
+let g:terminal_ansi_colors = pop_punk#AnsiColors()
+let g:rainbow_active = 1
+set t_Co=256
+inoremap jk <Esc>
+"set t_Co=16            " this is for the Solarized dark to work
+"set background=dark    " either for solarized dark or papercolor dark
+
+"-------------FONTS-------------"
+"highlight Type gui=bold cterm=bold
+"highlight Statement gui=italic cterm=italic
+"-------------SPACES & TABS-------------"
+set tabstop=4
+set listchars=tab:\|\ 
+set list
+set softtabstop=4
+set expandtab
+
+"-------------UI CONFIG-------------"
+set autoindent
+set noshowmode
+set rnu
+set number
+set showcmd
+set cursorline
+" filetype indent on
+set wildmenu
+set showmatch
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+hi CursorLine guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE
+hi CursorLineNr guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE
+
+"-------------SEARCHING-------------"
+set incsearch
+nohlsearch
+
+"-------------STATUS-------------"
+if &compatible
+  set nocompatible
+endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('edkolev/promptline.vim')
+  call dein#add('edkolev/tmuxline.vim')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('presevim/nerdtree')
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+filetype plugin indent on
+
+let g:lightline = {
+      \ 'colorscheme': 'ayu'
+      \ }
+
+"let g:lightline.enable = {
+"            \ 'statusline': 1,
+"            \ 'tabline': 1
+"            \ }
+
+let g:promptline_powerline_symbols=0
+let g:tmuxline_powerline_separators=0
+
+set showtabline=2
+set laststatus=2
+
+"-------------REMAP-------------"
+nnoremap tf  :tabfirst<CR>
+nnoremap gt  :tabnext<CR>
+nnoremap tt  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" Create vim backup, undo & swap directories
+let g:vimPath = $HOME . '/.vim'
+
+let g:vimBackupDir = g:vimPath . '/backup'
+let g:vimSwapDir = g:vimPath . '/swap'
+let g:vimUndoDir = g:vimPath . '/undo'
+
+if !isdirectory(g:vimPath)
+    call mkdir(g:vimPath)
+endif
+
+if !isdirectory(g:vimBackupDir)
+    call mkdir(g:vimBackupDir)
+endif
+
+if !isdirectory(g:vimSwapDir)
+    call mkdir(g:vimSwapDir)
+endif
+
+if !isdirectory(g:vimUndoDir)
+    call mkdir(g:vimUndoDir)
+endif
+
+set autoindent
+set number
+set relativenumber 
+set ignorecase
+set hlsearch
+set cursorline
+" set lazyredraw
+set re=1
+set shellslash
+set showcmd
+set wildignorecase
+set wildmenu
+set wildmode=full
+inoremap jk <Esc>
+vnoremap jk <Esc>  
+inoremap <Esc> <nop>
+vnoremap <Esc> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+vnoremap <up> <nop>
+vnoremap <down> <nop>
+vnoremap <left> <nop>
+vnoremap <right> <nop>
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :<C-u>
+vnoremap : ;
+" Highlight search as you type
+set incsearch
+nnoremap .. .
+
+" Indent line
+nnoremap <> ==$
+
+" Move to end of line
+nnoremap e $
+
+" Move to beginning of line
+nnoremap b ^
+
+" Move to beginning of next word
+" nnoremap w w
+
+" Move to beginning of previous word
+nnoremap W b
+
+" Move to end of next word
+nnoremap E e
+
+" (Visual Mode) Move to end of line
+vnoremap e $h
+
+" (Visual Mode) Move to beginning of line
+vnoremap b ^
+
+" (Visual Mode) Move to beginning of previous word
+vnoremap W b
+
+" (Visual Mode) Move to end of next word
+vnoremap E e
+
+" Move to end of line and start (Insert Mode)
+nnoremap a A
+
+" Move to beginning of line and start (Insert Mode)
+nnoremap A I
+
+" Move to right character and start (Insert Mode)
+nnoremap I li
+
+let mapleader=',' " leader is commas
+let maplocalleader='.' " localleader is period
+
+" Bring current line to top of the window 
+nnoremap zt zt
+" Bring current line to middle of the window
+nnoremap zz zz
+" Bring current line to bottom of the window
+nnoremap zb zb
+
+" Ready to open Bottom-Split
+""nnoremap ov :split<Space>
+
+" Ready to open Right-Split
+""nnoremap oh :vsplit<Space>
+set splitright
+set splitbelow
+
+" Move to Left-Split
+nnoremap <C-h> <C-w>h
+
+" Move to Bottom-Split
+nnoremap <C-j> <C-w>j
+
+" Move to Top-Split
+nnoremap <C-k>  <C-w>k
+
+" Move to Right-Split
+nnoremap <C-l>  <C-w>l
+
+" Circle through all the Splits
+nnoremap <C-w> <C-w>w
+
+" Auto-complete for braces & brackets & quotes
+inoremap (; (<CR>);<C-c>O
+inoremap (, (<CR>),<C-c>O
+inoremap {; {<CR>};<C-c>O
+inoremap {, {<CR>},<C-c>O
+inoremap [; [<CR>];<C-c>O
+inoremap [, [<CR>],<C-c>O
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ` ``<left>
+inoremap "" ""
+inoremap '' ''
+inoremap `` ``
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap () ()
+inoremap [] []
+inoremap {} {}
+inoremap <> <<Space><Space>><left><left>
+inoremap (<Space> (  )<C-c><left>i
+inoremap [<Space> [  ]<C-c><left>i
+inoremap {<Space> {  }<C-c><left>i
+inoremap {<CR> {<CR>}<C-c>O
+inoremap (<CR> (<CR>)<C-c>O
+inoremap [<CR> [<CR>]<C-c>O
+nnoremap J <C-e>
+nnoremap K <C-y>
+nnoremap L zi
+nnoremap H zh
+
+" Page scroll  keymappings
+" <PageDown>
+nnoremap <leader>j <PageDown>
+" <PageUp>
+nnoremap <leader>k <PageUp>
+" <Half-PageDown>
+nnoremap <localleader>j <C-d>
+" <Half-PageUp>
+nnoremap <localleader>k <C-u>
+
+" Toggle hlsearch
+nnoremap <localleader>/ :set hlsearch!<CR>
+
+" (Visual Mode) Toggle hlsearch
+vnoremap <localleader>/ :<C-u>set hlsearch!<CR>
+
+" Close current Split
+nnoremap _ :silent! q<CR>
+
+" Vim Undo History settings
+set undofile
+set undolevels=10000
+set undoreload=10000
+set history=10000
+set tags=./tags;
+set backupdir=$HOME/.vim/backup
+set directory=$HOME/.vim/swap
+set undodir=$HOME/.vim/undo
+set viewdir=$HOME/.vim/view
+set viminfo='1000000,n$HOME/.vim/.viminfo'
+
+" Quit (Command Mode) back to (Normal Mode)
+cnoremap jk <C-c>
+
+" Quit (Selection Mode) back to (Normal Mode)
+snoremap jk <C-c>
+xnoremap jk <C-c>
+
+" Quit (Operator Mode) back to (Normal Mode)
+onoremap jk <C-c>

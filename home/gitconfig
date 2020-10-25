@@ -1,0 +1,23 @@
+[user]
+	name = chrisdcao
+	email = chrisdcao@gmail.com
+	signingkey = 0ADC084E1EED18C3
+	mail = khanhcao96@gmail.com
+[gpg]
+	program = gpg2
+[merge]
+	conflictstyle = diff3
+[rerere]
+	enabled = true
+[diff]
+	submodule = log
+[alias]
+	co = checkout
+	br = branch
+	st = status
+[core]
+	editor = vim
+[commit]
+	template = /home/khanhcao96/.gitmessage.txt
+[color]
+	ui = auto
