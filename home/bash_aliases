@@ -1,3 +1,14 @@
+# VIM
 alias "vimt"="vim -c 'NERDTree'"
+
+# TMUX
+
+# GITHUB
 alias "commat"="git add -A; git commit"
 alias "push"="git push"
+
+# GCC
+alias "go"="gcc -o"
+alias "gwall"="gcc -Wall -g"
+
+
