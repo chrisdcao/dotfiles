@@ -9,6 +9,6 @@ alias "push"="git push"
 
 # GCC
 alias "go"="gcc -o"
-alias "gwall"="gcc -Wall -g"
+alias "gdbc"="gcc -Wall -g"
 
 
