@@ -7,7 +7,7 @@ if (has("termguicolors"))
 endif
 syntax on
 "let ayucolor="dark"
-colorscheme ayu
+colorscheme dracula
 let g:terminal_ansi_colors = pop_punk#AnsiColors()
 let g:rainbow_active = 1
 set t_Co=256
@@ -70,7 +70,7 @@ endif
 filetype plugin indent on
 
 let g:lightline = {
-      \ 'colorscheme': 'ayu'
+      \ 'colorscheme': 'dracula'
       \ }
 
 "let g:lightline.enable = {
