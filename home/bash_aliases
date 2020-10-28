@@ -7,8 +7,8 @@ alias "vimt"="vim -c 'NERDTree'"
 alias "commat"="git add -A; git commit"
 alias "push"="git push"
 
-# GCC
-alias "gdbc"="gcc -Wall -g"
+# Compiling && GDB
+alias "gdbc"="gcc -g3 -Wall -Wextra"
 alias "gdbui"="gdb -tui"
-
+alias "jk"="<Esc>"
 
