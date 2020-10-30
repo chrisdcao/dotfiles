@@ -6,8 +6,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 syntax on
-"let ayucolor="dark"
-colorscheme dracula
+let dosbox="light"
+colorscheme dosbox
 let g:terminal_ansi_colors = pop_punk#AnsiColors()
 let g:rainbow_active = 1
 set t_Co=256
@@ -16,8 +16,17 @@ inoremap jk <Esc>
 "set background=dark    " either for solarized dark or papercolor dark
 
 "-------------FONTS-------------"
-"highlight Type gui=bold cterm=bold
-"highlight Statement gui=italic cterm=italic
+highlight Type gui=bold cterm=bold
+highlight Statement gui=bold cterm=bold
+highlight StorageClass gui=bold cterm=bold
+highlight Conditional gui=bold cterm=bold
+highlight Boolean gui=bold cterm=bold
+highlight Special gui=bold cterm=bold
+highlight WarningMsg gui=bold cterm=bold
+highlight Include gui=bold cterm=bold guifg=#5fd7ff guibg=NONE
+""for presentation
+highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
+
 "-------------SPACES & TABS-------------"
 set tabstop=4
 set listchars=tab:\|\ 
@@ -40,8 +49,8 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-hi CursorLine guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE
-hi CursorLineNr guifg=NONE guibg=#2d3c45 ctermbg=237 gui=NONE term=NONE cterm=NONE
+hi clear CursorLine
+hi CursorLineNr gui=bold cterm=bold guifg=#878787
 
 "-------------SEARCHING-------------"
 set incsearch
@@ -70,7 +79,7 @@ endif
 filetype plugin indent on
 
 let g:lightline = {
-      \ 'colorscheme': 'dracula'
+      \ 'colorscheme': '16color'
       \ }
 
 "let g:lightline.enable = {
@@ -85,6 +94,12 @@ set showtabline=2
 set laststatus=2
 
 "-------------REMAP-------------"
+"resize splits
+nnoremap <silent> <c-Up> :resize +1<CR>
+nnoremap <silent> <c-Down> :resize -1<CR>
+nnoremap <silent> <c-left> :vertical resize +1<CR>
+nnoremap <silent> <c-right> :vertical resize -1<CR>
+
 nnoremap tf  :tabfirst<CR>
 nnoremap gt  :tabnext<CR>
 nnoremap tt  :tabprev<CR>

@@ -7,8 +7,11 @@ alias "vimt"="vim -c 'NERDTree'"
 alias "commat"="git add -A; git commit"
 alias "push"="git push"
 
-# Compiling && GDB
-alias "gdbc"="gcc -g3 -Wall -Wextra"
+# Compiling
+# GDB
+alias "gdbc"="gcc -g3 -Wall -Wextra -o"
 alias "gdbui"="gdb -tui"
-alias "jk"="<Esc>"
+
+# Python
+alias "pythonc"="python3 -m py_compile"
 
