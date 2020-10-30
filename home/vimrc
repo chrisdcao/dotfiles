@@ -19,13 +19,16 @@ inoremap jk <Esc>
 highlight Type gui=bold cterm=bold
 highlight Statement gui=bold cterm=bold
 highlight StorageClass gui=bold cterm=bold
-highlight Conditional gui=bold cterm=bold
+highlight Conditional gui=bold cterm=bold guifg=#ffff00
 highlight Boolean gui=bold cterm=bold
 highlight Special gui=bold cterm=bold
 highlight WarningMsg gui=bold cterm=bold
-highlight Include gui=bold cterm=bold guifg=#5fd7ff guibg=NONE
+highlight Include gui=bold cterm=bold guifg=#ff0080
+highlight MatchParen gui=bold cterm=bold guibg=#000e8a
+hi CursorLine gui=bold cterm=bold guifg=#000000 guibg=#ff8000
+hi CursorLineNr gui=bold cterm=bold guifg=#000000 guibg=#878787
 ""for presentation
-highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
+""highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
 
 "-------------SPACES & TABS-------------"
 set tabstop=4
@@ -49,8 +52,6 @@ augroup numbertoggle
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
-hi clear CursorLine
-hi CursorLineNr gui=bold cterm=bold guifg=#878787
 
 "-------------SEARCHING-------------"
 set incsearch
