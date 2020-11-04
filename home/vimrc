@@ -7,32 +7,33 @@ if (has("termguicolors"))
 endif
 syntax on
 let dosbox="light"
-colorscheme dosbox
+colorscheme greenvision
 let g:terminal_ansi_colors = pop_punk#AnsiColors()
-let g:rainbow_active = 1
+let g:rainbow_active = 0
 set t_Co=256
 inoremap jk <Esc>
 "set t_Co=16            " this is for the Solarized dark to work
 "set background=dark    " either for solarized dark or papercolor dark
 
 "-------------FONTS-------------"
-highlight Type gui=bold cterm=bold
+highlight Type gui=bold cterm=bold guifg=#50d930
+highlight Comment gui=bold cterm=bold guifg=#007900
 highlight Statement gui=bold cterm=bold
-highlight StorageClass gui=bold cterm=bold
-highlight Conditional gui=bold cterm=bold guifg=#ffff00
+highlight StorageClass gui=bold cterm=bold guifg=#00fe00
+highlight Repeat gui=bold cterm=bold guifg=#00cf7c
+highlight Conditional gui=bold cterm=bold guifg=#00cf7c
 highlight Boolean gui=bold cterm=bold
 highlight Special gui=bold cterm=bold
 highlight WarningMsg gui=bold cterm=bold
-highlight Include gui=bold cterm=bold guifg=#ff0080
-highlight MatchParen gui=bold cterm=bold guibg=#000e8a
-hi CursorLine gui=bold cterm=bold guifg=#000000 guibg=#ff8000
-hi CursorLineNr gui=bold cterm=bold guifg=#000000 guibg=#878787
-""for presentation
-""highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
+highlight Include gui=bold cterm=bold guifg=#00fe00
+highlight MatchParen gui=reverse guibg=#001900 guifg=#00ef00
+hi CursorLine gui=bold cterm=bold guifg=#70ff96 guibg=#002500
+hi CursorLineNr gui=bold cterm=bold guifg=#00fe00 guibg=#001000
+"highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
 
 "-------------SPACES & TABS-------------"
 set tabstop=4
-set listchars=tab:\|\ 
+set listchars=tab:\ \ 
 set list
 set softtabstop=4
 set expandtab
