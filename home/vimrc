@@ -16,18 +16,20 @@ inoremap jk <Esc>
 "set background=dark    " either for solarized dark or papercolor dark
 
 "-------------FONTS-------------"
-highlight Type gui=bold cterm=bold guifg=#50d930
-highlight Comment gui=bold cterm=bold guifg=#007900
-highlight Statement gui=bold cterm=bold
-highlight StorageClass gui=bold cterm=bold guifg=#00fe00
+highlight Type gui=bold cterm=bold guifg=#5eff74
+highlight Boolean gui=bold cterm=bold 
+highlight Comment gui=none cterm=none guifg=#446644
+highlight Statement gui=bold cterm=bold guifg=#9fdb37
+highlight StorageClass gui=bold cterm=bold guifg=#00ef00
 highlight Repeat gui=bold cterm=bold guifg=#00cf7c
-highlight Conditional gui=bold cterm=bold guifg=#00cf7c
-highlight Boolean gui=bold cterm=bold
+highlight Conditional gui=bold cterm=bold guifg=#00ef00
+highlight Define gui=bold cterm=bold guifg=#50d930 guibg=NONE
+highlight PreProc gui=none cterm=none guifg=#00d486 guibg=NONE
 highlight Special gui=bold cterm=bold
 highlight WarningMsg gui=bold cterm=bold
-highlight Include gui=bold cterm=bold guifg=#00fe00
-highlight MatchParen gui=reverse guibg=#001900 guifg=#00ef00
-hi CursorLine gui=bold cterm=bold guifg=#70ff96 guibg=#002500
+highlight Include gui=bold cterm=bold guifg=#44ff44
+highlight MatchParen gui=bold,reverse guibg=#001900 guifg=#00ef00
+hi CursorLine gui=NONE cterm=NONE guifg=NONE guibg=#002500
 hi CursorLineNr gui=bold cterm=bold guifg=#00fe00 guibg=#001000
 "highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
 
@@ -44,6 +46,7 @@ set noshowmode
 set rnu
 set number
 set showcmd
+""set cursorcolumn
 set cursorline
 " filetype indent on
 set wildmenu

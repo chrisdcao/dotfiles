@@ -18,3 +18,5 @@ alias "pythonc"="python3 -m py_compile"
 #tmux
 alias "tmux"="TERM=screen-256color-bce tmux"
 
+#mpi compile
+alias "mpic"="mpicc -I/usr/lib/x86_64-linux-gnu/openmpi/include"
