@@ -11,6 +11,7 @@ alias "push"="git push"
 # GDB
 alias "gdbc"="gcc -g3 -Wall -Wextra -o"
 alias "gdbui"="gdb -tui"
+alias "export-ompcc"="export PATH=/usr/share/bin:$PATH"
 
 # Python
 alias "pythonc"="python3 -m py_compile"

@@ -19,7 +19,7 @@ inoremap jk <Esc>
 highlight Type gui=bold cterm=bold guifg=#61ed6d
 highlight Boolean gui=bold cterm=bold 
 highlight Comment gui=none cterm=none guifg=#446644
-highlight Statement gui=bold cterm=bold guifg=#90c769
+highlight Statement gui=bold cterm=bold guifg=#96de6d
 highlight StorageClass gui=bold cterm=bold guifg=#00ef00
 highlight Repeat gui=bold cterm=bold guifg=#00cf7c
 highlight Conditional gui=bold cterm=bold guifg=#00ef00
