@@ -1,3 +1,7 @@
+# TERMINAL
+alias "showpath"="readlink -f"
+alias "symlink"="ln -s"
+
 # VIM
 alias "vimt"="vim -c 'NERDTree'"
 
@@ -9,7 +13,8 @@ alias "push"="git push"
 
 # Compiling
 # GDB
-alias "gdbc"="gcc -g3 -Wall -Wextra -o"
+alias "g++db"="g++ -g3 -Wall -Wextra"
+alias "gdbc"="gcc -g3 -W -Wall -Wextra"
 alias "gdbui"="gdb -tui"
 alias "export-ompcc"="export PATH=/usr/share/bin:$PATH"
 
