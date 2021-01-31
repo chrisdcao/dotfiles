@@ -21,8 +21,10 @@ alias "export-ompcc"="export PATH=/usr/share/bin:$PATH"
 # Python
 alias "pythonc"="python3 -m py_compile"
 
-#tmux
-alias "tmux"="TERM=screen-256color-bce tmux"
-
-#mpi compile
+# mpi compile
 alias "mpic"="mpicc -I/usr/lib/x86_64-linux-gnu/openmpi/include"
+
+# Java
+alias "javacstd"="javac -classpath .:stdlib.jar"
+alias "javastd"="java -classpath .:stdlib.jar"
+alias "java-algs4"="java -classpath .:algs4.jar"

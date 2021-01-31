@@ -10,44 +10,34 @@ if exists('+termguicolors')
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
 endif
+
 syntax on
 set t_Co=256
 set t_ut=
-""let ayucolor = "dark"
-"set t_Co=16            " this is for the Solarized dark to work
-""set background=dark    " either for solarized dark or papercolor dark
-""let g:material_terminal_italics = 1
+set mouse=a
+"let ayucolor = "dark"
+"set t_Co=16            " this is for the solarized8 dark to work
+set background=light    " either for solarized8 dark or papercolor dark
+"let g:material_terminal_italics = 1
 ""let g:material_theme_style = 'palenight'
-colorscheme greenvision
+colorscheme kemonofriends
 let g:rainbow_active = 0
+let g:colorscheme_kemonofriends_sandstar_active = 0
 
 "-------------FONTS-------------"
-highlight Type gui=bold cterm=bold guifg=#61ed6d
-highlight Boolean gui=bold cterm=bold 
-highlight Comment gui=none cterm=none guifg=#337233
-highlight Statement gui=bold cterm=bold guifg=#00ec00
-highlight StorageClass gui=bold cterm=bold guifg=#00ef00
-highlight Repeat gui=bold cterm=bold guifg=#00cf7c
-highlight Conditional gui=bold cterm=bold guifg=#00ef00
-highlight Define gui=bold cterm=bold guifg=#50d930 guibg=NONE
-highlight PreProc gui=none cterm=none guifg=#00d486 guibg=NONE
-highlight Special gui=bold cterm=bold
-highlight WarningMsg gui=bold cterm=bold
-highlight Include gui=bold cterm=bold guifg=#4ccf60
-highlight MatchParen gui=bold,reverse guibg=#001900 guifg=#00ef00
-hi CursorLine gui=none cterm=none guifg=NONE guibg=#002500
-hi CursorLineNr gui=bold cterm=bold guifg=#00fe00 guibg=#001000
-""highlight Comment gui=bold cterm=bold guifg=#ffffff guibg=NONE
+"augroup filetypedetec
+    "au BufRead,BufNewFile *.p4 setfiletype c
+    ""associate .p4 with C filetype
+"augroup END
 
 "-------------SPACES & TABS-------------"
 set backspace=indent,eol,start
 set tabstop=4
 set listchars=tab:\ \ 
 set list
-set softtabstop=0
+set softtabstop=4
 set expandtab
 set autoindent
-set smartindent
 set shiftwidth=4
 
 "-------------UI CONFIG-------------"
@@ -55,9 +45,10 @@ set noshowmode
 set rnu
 set number
 set showcmd
-""set cursorcolumn
-set cursorline
+
+"set cursorcolumn
 " filetype indent on
+filetype plugin on
 set wildmenu
 set showmatch
 augroup numbertoggle
@@ -85,6 +76,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('edkolev/tmuxline.vim')
   call dein#add('itchyny/lightline.vim')
   call dein#add('presevim/nerdtree')
+  call dein#add('presevim/nerdcommenter')
 
   call dein#end()
   call dein#save_state()
@@ -93,7 +85,7 @@ endif
 filetype plugin indent on
 
 let g:lightline = {
-      \ 'colorscheme': '16color'
+      \ 'colorscheme': 'kemonofriends'
       \ }
 
 "let g:lightline.enable = {
@@ -108,16 +100,26 @@ set showtabline=2
 set laststatus=2
 
 "-------------REMAP-------------"
+nnoremap rr :RainbowToggle<cr>
+nnoremap <leader>r :resize -30<cr>
+"TREE
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 "resize splits
-nnoremap <silent> <c-Up> :resize +1<CR>
-nnoremap <silent> <c-Down> :resize -1<CR>
-nnoremap <silent> <c-left> :vertical resize +1<CR>
-nnoremap <silent> <c-right> :vertical resize -1<CR>
+nnoremap <C-Up> :resize +1<CR>
+nnoremap <C-Down> :resize -1<CR>
+nnoremap <C-Left> :vertical resize +1<CR>
+nnoremap <C-Right> :vertical resize -1<CR>
 
 nnoremap tf  :tabfirst<CR>
 nnoremap gt  :tabnext<CR>
 nnoremap tt  :tabprev<CR>
 nnoremap tl  :tablast<CR>
+
+nnoremap qq q: 
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -152,7 +154,7 @@ set relativenumber
 set ignorecase
 set hlsearch
 set cursorline
-" set lazyredraw
+"set lazyredraw
 set re=1
 set shellslash
 set showcmd
@@ -163,23 +165,23 @@ inoremap jk <Esc>
 vnoremap jk <Esc>  
 inoremap <Esc> <nop>
 vnoremap <Esc> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-vnoremap <up> <nop>
-vnoremap <down> <nop>
-vnoremap <left> <nop>
-vnoremap <right> <nop>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+"vnoremap <up> <nop>
+"vnoremap <down> <nop>
+"vnoremap <left> <nop>
+"vnoremap <right> <nop>
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :<C-u>
 vnoremap : ;
-" Highlight search as you type
+" "highlight search as you type
 set incsearch
 nnoremap .. .
 
@@ -233,10 +235,11 @@ nnoremap zz zz
 nnoremap zb zb
 
 " Ready to open Bottom-Split
-""nnoremap ov :split<Space>
+"nnoremap sh :split<Space>
 
 " Ready to open Right-Split
-""nnoremap oh :vsplit<Space>
+"nnoremap sv :vsplit<Space>
+"nnoremap rs :resize<Space>
 set splitright
 set splitbelow
 
