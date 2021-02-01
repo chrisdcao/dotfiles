@@ -101,7 +101,7 @@ set laststatus=2
 
 "-------------REMAP-------------"
 nnoremap rr :RainbowToggle<cr>
-nnoremap <leader>p :PingCursor<cr>
+nnoremap cc :PingCursor<cr>
 let g:ping_cursor_flash_milliseconds = 400
 nnoremap <leader>r :resize -30<cr>
 "TREE
