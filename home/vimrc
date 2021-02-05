@@ -20,9 +20,9 @@ set mouse=a
 set background=light    " either for solarized8 dark or papercolor dark
 "let g:material_terminal_italics = 1
 ""let g:material_theme_style = 'palenight'
-colorscheme kemonofriends
+colorscheme molokai_pdf
 let g:rainbow_active = 0
-let g:colorscheme_kemonofriends_sandstar_active = 0
+"let g:colorscheme_kemonofriends_sandstar_active = 0
 
 "-------------FONTS-------------"
 "augroup filetypedetec
@@ -61,6 +61,18 @@ augroup END
 set incsearch
 nohlsearch
 
+"-------- CURSOR SHAPE --------
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' | 
+    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
 "-------------STATUS-------------"
 if &compatible
   set nocompatible
@@ -85,7 +97,7 @@ endif
 filetype plugin indent on
 
 let g:lightline = {
-      \ 'colorscheme': 'kemonofriends'
+      \ 'colorscheme': 'molokai'
       \ }
 
 "let g:lightline.enable = {
