@@ -5,6 +5,7 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+" tmux preserve colors
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -12,23 +13,38 @@ if exists('+termguicolors')
 endif
 
 syntax on
-set t_Co=256
+
 set t_ut=
 set mouse=a
-"let ayucolor = "dark"
-"set t_Co=16            " this is for the solarized8 dark to work
-set background=light    " either for solarized8 dark or papercolor dark
-"let g:material_terminal_italics = 1
-""let g:material_theme_style = 'palenight'
-colorscheme molokai_pdf
-let g:rainbow_active = 0
-"let g:colorscheme_kemonofriends_sandstar_active = 0
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
 
-"-------------FONTS-------------"
-"augroup filetypedetec
-    "au BufRead,BufNewFile *.p4 setfiletype c
-    ""associate .p4 with C filetype
-"augroup END
+"------------- CHANGE THEME BASE ON TIME -------------"
+let hr = (strftime('%H'))
+if hr >= 19
+colorscheme elflord
+elseif hr >= 8
+colorscheme xterm16
+set background=light
+elseif hr >= 0
+colorscheme elflord
+endif
+
+"-------------QUICK HIGHLIGHT FOR CERTAIN THEMES-------------"
+hi! CursorLine guibg=NONE ctermbg=NONE
+hi! CursorLineNR cterm=NONE
+hi Boolean ctermfg=Red  guifg=#ff0000
+hi IncSearch guibg=DarkBlue guifg=White cterm=bold
+" hi Search cterm=underline
+" hi! Search cterm=bold
+" hi! IncSearch cterm=bold,reverse
+" hi! Statement cterm=bold
+" hi! Repeat cterm=bold
+" hi! Conditional cterm=bold
+" hi! Number cterm=bold
+" hi! Character cterm=bold
+" hi! Constant cterm=bold
+" hi! Boolean cterm=bold
 
 "-------------SPACES & TABS-------------"
 set backspace=indent,eol,start
@@ -61,17 +77,17 @@ augroup END
 set incsearch
 nohlsearch
 
-"-------- CURSOR SHAPE --------
-if has("autocmd")
-  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
-  au InsertEnter,InsertChange *
-    \ if v:insertmode == 'i' | 
-    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
-    \ elseif v:insertmode == 'r' |
-    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-    \ endif
-  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-endif
+"------------ CURSOR SHAPE-----------"
+" if has("autocmd")
+  " au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  " au InsertEnter,InsertChange *
+    " \ if v:insertmode == 'i' | 
+    " \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    " \ elseif v:insertmode == 'r' |
+    " \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    " \ endif
+  " au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+" endif
 
 "-------------STATUS-------------"
 if &compatible
@@ -96,10 +112,21 @@ endif
 
 filetype plugin indent on
 
+"------------- CHANGE THEME BASE ON TIME -------------"
+if hr >= 19
 let g:lightline = {
-      \ 'colorscheme': 'molokai'
+      \ 'colorscheme': 'simpleblack'
       \ }
-
+elseif hr >= 8
+let g:lightline = {
+      \ 'colorscheme': '16color'
+      \ }
+elseif hr >= 0
+let g:lightline = {
+      \ 'colorscheme': 'simpleblack'
+      \ }
+endif
+let g:lightline_foobar_bold = 1
 "let g:lightline.enable = {
 "            \ 'statusline': 1,
 "            \ 'tabline': 1
@@ -112,10 +139,10 @@ set showtabline=2
 set laststatus=2
 
 "-------------REMAP-------------"
-nnoremap rr :RainbowToggle<cr>
-nnoremap c :PingCursor<cr>
-let g:ping_cursor_flash_milliseconds = 450
 nnoremap <leader>r :resize -30<cr>
+nnoremap <F12> :TagbarToggle<CR>
+inoremap <F12> :TagbarToggle<CR>
+vnoremap <F12> :TagbarToggle<CR>
 "TREE
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -293,7 +320,8 @@ inoremap { {}<left>
 inoremap () ()
 inoremap [] []
 inoremap {} {}
-inoremap <> <<Space><Space>><left><left>
+inoremap <> <><left>
+inoremap /* /*<Space><Space>*/<left><left><left>
 inoremap (<Space> (  )<C-c><left>i
 inoremap [<Space> [  ]<C-c><left>i
 inoremap {<Space> {  }<C-c><left>i
