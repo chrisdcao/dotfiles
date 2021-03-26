@@ -2,6 +2,7 @@
 alias "showpath"="readlink -f"
 alias "symlink"="ln -s"
 alias "off"="shutdown -h now"
+alias "schema"="vim /usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.xml"
 
 # VIM
 alias "vimt"="vim -c 'NERDTree'"
