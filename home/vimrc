@@ -54,6 +54,7 @@ if s:line == "'WhiteSur-dark-alt'"
 else
     colorscheme xterm16
     set background=light
+    hi CursorLineNr cterm=NONE
 endif
 
 "-------------QUICK HIGHLIGHT FOR CERTAIN THEMES-------------"

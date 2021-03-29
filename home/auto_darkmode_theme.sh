@@ -36,6 +36,7 @@ else
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-foreground-color white
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ bold-is-bright false
     cat ~/starwars7.txt
+    echo $theme > vim_mode.txt
 fi
 
 # ----------- END OF CHANGE THEME BASED ON TIME ----------
