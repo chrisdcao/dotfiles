@@ -3,6 +3,22 @@ alias "showpath"="readlink -f"
 alias "symlink"="ln -s"
 alias "off"="shutdown -h now"
 alias "schema"="vim /usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.xml"
+alias "remove"="sudo apt remove -y"
+alias "install"="sudo apt install -y"
+alias "quit"="exit"
+alias "reload"="source ~/.bashrc"
+
+alias "algos"="cd Algos_4th_Solutions/"
+alias "algoc"="cd Algos_Collection/"
+
+alias "c2"="cd Chapter_02/"
+alias "c3"="cd Chapter_03/"
+alias "c4"="cd Chapter_04/"
+
+alias "s4"="cd Section\ 4\ \(Reviewing\)/"
+alias "s3"="cd Section\ 3\ \(Reviewing\)/"
+alias "s2"="cd Section\ 2\ \(Reviewing\)/"
+alias "s1"="cd Section\ 1\ \(Reviewing\)/"
 
 # VIM
 alias "vimt"="vim -c 'NERDTree'"
@@ -33,3 +49,10 @@ alias "mpic"="mpicc -I/usr/lib/x86_64-linux-gnu/openmpi/include"
 alias "javacstd"="javac -classpath .:stdlib.jar"
 alias "javastd"="java -classpath .:stdlib.jar"
 alias "java-algs4"="java -classpath .:algs4.jar"
+
+# CONDA
+alias "condastart"="source ~/conda_init.sh && conda activate"
+alias "condaquit"="conda deactivate"
+alias "ipy"="ipython"
+alias "learnann"="cd \[LEARN\]\ Udemy\ -\ Deep\ Learning\ A-Z™\ Hands-On\ Artificial\ Neural\ Networks/"
+alias "spd"="source ~/conda_init.sh && conda activate && spyder"

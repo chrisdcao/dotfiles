@@ -1,3 +1,29 @@
+"-------------VIM - JEDI-------------"
+set nocompatible              " be iMproved, required
+filetype off                  " required
+call vundle#begin()
+Plugin 'davidhalter/jedi-vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+let g:jedi#goto_command = "<leader>c"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = "<leader>f"
+let g:jedi#documentation_command = "<leader>d"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#popup_on_dot = 0
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#use_splits_not_buffers = "bottom"
+
+"-------------CUSTOM SETTINGS ONLY FOR PY-------------"
+" set the cursorline to blue only for .py files
+autocmd Filetype python hi CursorLine guibg=Blue
+" stop the docstring from pop up whenever we finish a type
+autocmd FileType python setlocal completeopt-=preview
+" add the print full array options at the beginning of a new empty python file
+autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+
 "-------------COLORS-------------"
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -19,21 +45,21 @@ set mouse=a
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 
-"------------- CHANGE THEME BASE ON TIME -------------"
-let hr = (strftime('%H'))
-if hr >= 19
-colorscheme elflord
-elseif hr >= 8
-colorscheme xterm16
-set background=light
-elseif hr >= 0
-colorscheme elflord
+"------------- CHANGE THEME BASE ON THEME -------------"
+let s:lines = readfile(globpath('~','vim_mode.txt'))
+let s:line = s:lines[0]
+
+if s:line == "'WhiteSur-dark-alt'"
+    colorscheme elflord
+else
+    colorscheme xterm16
+    set background=light
 endif
 
 "-------------QUICK HIGHLIGHT FOR CERTAIN THEMES-------------"
-hi! CursorLine guibg=NONE ctermbg=NONE
-hi! CursorLineNR cterm=NONE
-hi Boolean ctermfg=Red  guifg=#ff0000
+" hi! CursorLine guibg=#262626 ctermbg=NONE
+" " hi! CursorLineNR cterm=NONE ctermfg=White ctermbg=Blue guifg=#ffffff guibg=#0000ff
+" hi Boolean ctermfg=Red  guifg=#ff0000
 hi IncSearch guibg=DarkBlue guifg=White cterm=bold
 " hi Search cterm=underline
 " hi! Search cterm=bold
@@ -112,21 +138,18 @@ endif
 
 filetype plugin indent on
 
-"------------- CHANGE THEME BASE ON TIME -------------"
-if hr >= 19
-let g:lightline = {
-      \ 'colorscheme': 'simpleblack'
-      \ }
-elseif hr >= 8
-let g:lightline = {
-      \ 'colorscheme': '16color'
-      \ }
-elseif hr >= 0
-let g:lightline = {
-      \ 'colorscheme': 'simpleblack'
-      \ }
+"------------- CHANGE THEME BASE ON THEME -------------"
+if s:line == "'WhiteSur-dark-alt'"
+    let g:lightline = {
+          \ 'colorscheme': 'simpleblack'
+          \ }
+else
+    let g:lightline = {
+          \ 'colorscheme': '16color'
+          \ }
 endif
-let g:lightline_foobar_bold = 1
+
+" let g:lightline_foobar_bold = 1
 "let g:lightline.enable = {
 "            \ 'statusline': 1,
 "            \ 'tabline': 1
@@ -150,10 +173,10 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 "resize splits
-nnoremap <C-Up> :resize +1<CR>
-nnoremap <C-Down> :resize -1<CR>
-nnoremap <C-Left> :vertical resize +1<CR>
-nnoremap <C-Right> :vertical resize -1<CR>
+" nnoremap <C-Up> :resize +1<CR>
+" nnoremap <C-Down> :resize -1<CR>
+" nnoremap <C-Left> :vertical resize +1<CR>
+" nnoremap <C-Right> :vertical resize -1<CR>
 
 nnoremap tf  :tabfirst<CR>
 nnoremap gt  :tabnext<CR>
@@ -212,10 +235,15 @@ set clipboard=unnamed
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
 "nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <C-up> <nop>
+inoremap <C-down> <nop>
+inoremap <C-left> <nop>
+inoremap <C-right> <nop>
+"vnoremap <up> <nop>
 "vnoremap <up> <nop>
 "vnoremap <down> <nop>
 "vnoremap <left> <nop>
