@@ -19,16 +19,7 @@ then
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-foreground-color black
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ bold-is-bright true
     cat ~/starwars6.txt
-    echo $theme > vim_mode.txt
-    # if [[ $random -ge 50 && $random -lt 100 ]]
-    # then 
-        # cat ~/starwars6.txt
-    # elif [[ $random -ge 100 ]]
-    # then
-        # cat ~/starwars4.txt
-    # else
-        # cat ~/starwars5.txt
-    # fi
+    echo $theme > ~/vim_mode.txt
 else
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ background-color white
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ foreground-color black
@@ -36,7 +27,7 @@ else
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-foreground-color white
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ bold-is-bright false
     cat ~/starwars7.txt
-    echo $theme > vim_mode.txt
+    echo $theme > ~/vim_mode.txt
 fi
 
 # ----------- END OF CHANGE THEME BASED ON TIME ----------

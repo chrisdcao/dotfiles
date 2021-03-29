@@ -15,10 +15,9 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#popup_on_dot = 0
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#use_splits_not_buffers = "bottom"
+let g:pymode_rope = 0
 
 "-------------CUSTOM SETTINGS ONLY FOR PY-------------"
-" set the cursorline to blue only for .py files
-autocmd Filetype python hi CursorLine guibg=Blue
 " stop the docstring from pop up whenever we finish a type
 autocmd FileType python setlocal completeopt-=preview
 " add the print full array options at the beginning of a new empty python file
@@ -51,10 +50,14 @@ let s:line = s:lines[0]
 
 if s:line == "'WhiteSur-dark-alt'"
     colorscheme elflord
+    " set the cursorline to blue only for .py files
+    autocmd Filetype python hi CursorLine guibg=Blue
 else
     colorscheme xterm16
     set background=light
     hi CursorLineNr cterm=NONE
+    hi CursorLine cterm=NONE guibg=NONE guifg=NONE ctermfg=NONE ctermbg=NONE
+    autocmd Filetype python hi CursorLine ctermbg=LightGray guibg=#eaeaea
 endif
 
 "-------------QUICK HIGHLIGHT FOR CERTAIN THEMES-------------"
@@ -261,10 +264,10 @@ nnoremap .. .
 nnoremap <> ==$
 
 " Move to end of line
-nnoremap e $
+nnoremap E $
 
 " Move to beginning of line
-nnoremap b ^
+nnoremap B ^
 
 " Move to beginning of next word
 " nnoremap w w
@@ -273,19 +276,19 @@ nnoremap b ^
 nnoremap W b
 
 " Move to end of next word
-nnoremap E e
+nnoremap e E
 
 " (Visual Mode) Move to end of line
-vnoremap e $h
+vnoremap E $h
 
 " (Visual Mode) Move to beginning of line
-vnoremap b ^
+vnoremap B ^
 
 " (Visual Mode) Move to beginning of previous word
 vnoremap W b
 
 " (Visual Mode) Move to end of next word
-vnoremap E e
+vnoremap e E
 
 " Move to end of line and start (Insert Mode)
 nnoremap a A
