@@ -15,10 +15,12 @@ alias "c2"="cd Chapter_02/"
 alias "c3"="cd Chapter_03/"
 alias "c4"="cd Chapter_04/"
 
-alias "s4"="cd Section\ 4\ \(Reviewing\)/"
-alias "s3"="cd Section\ 3\ \(Reviewing\)/"
-alias "s2"="cd Section\ 2\ \(Reviewing\)/"
 alias "s1"="cd Section\ 1\ \(Reviewing\)/"
+alias "s2"="cd Section\ 2\ \(Reviewing\)/"
+alias "s3"="cd Section\ 3\ \(Reviewing\)/"
+alias "s4"="cd Section\ 4\ \(Reviewing\)/"
+alias "s5"="cd Section\ 5\ \(Reviewing\)/"
+alias "s6"="cd Section\ 6\ \(Reviewing\)/"
 
 # VIM
 alias "vimt"="vim -c 'NERDTree'"
@@ -49,10 +51,14 @@ alias "mpic"="mpicc -I/usr/lib/x86_64-linux-gnu/openmpi/include"
 alias "javacstd"="javac -classpath .:stdlib.jar"
 alias "javastd"="java -classpath .:stdlib.jar"
 alias "java-algs4"="java -classpath .:algs4.jar"
+alias "intellij"="cd ~/idea-IC-211.6693.111/bin && ./idea.sh"
 
 # CONDA
 alias "condastart"="source ~/conda_init.sh && conda activate"
 alias "condaquit"="conda deactivate"
 alias "ipy"="ipython"
-alias "learnann"="cd \[LEARN\]\ Udemy\ -\ Deep\ Learning\ A-Z™\ Hands-On\ Artificial\ Neural\ Networks/"
+alias "learnann"="cd ~/GRDAI_Documents/In\ Progress\ -\ Udemy\ -\ Deep\ Learning\ A-Z™\ Hands-On\ Artificial\ Neural\ Networks/"
+alias "learnrnn"="cd ~/GRDAI_Documents/Introduction\ To\ Machine\ Learning\ Deep\ Learning\ In\ Python/RNN/"
 alias "spd"="source ~/conda_init.sh && conda activate && spyder"
+
+

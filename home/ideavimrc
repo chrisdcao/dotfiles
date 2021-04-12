@@ -1,0 +1,230 @@
+"-------------UI CONFIG-------------"
+set noshowmode
+set guifont=Operator\ Mono\ Lig\ Book:h14
+set rnu
+set number
+set showcmd
+
+"set cursorcolumn
+" filetype indent on
+filetype plugin on
+set wildmenu
+set showmatch
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+"-------------SEARCHING-------------"
+set incsearch
+nohlsearch
+"-------------REMAP-------------"
+nnoremap tf  :tabfirst<CR>
+nnoremap gt  :tabnext<CR>
+nnoremap tt  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+
+nnoremap qq q: 
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+" Create vim backup, undo & swap directories
+let g:vimPath = $HOME . '/.vim'
+
+let g:vimBackupDir = g:vimPath . '/backup'
+let g:vimSwapDir = g:vimPath . '/swap'
+let g:vimUndoDir = g:vimPath . '/undo'
+
+if !isdirectory(g:vimPath)
+    call mkdir(g:vimPath)
+endif
+
+if !isdirectory(g:vimBackupDir)
+    call mkdir(g:vimBackupDir)
+endif
+
+if !isdirectory(g:vimSwapDir)
+    call mkdir(g:vimSwapDir)
+endif
+
+if !isdirectory(g:vimUndoDir)
+    call mkdir(g:vimUndoDir)
+endif
+
+set autoindent
+set number
+set relativenumber 
+set ignorecase
+set hlsearch
+set cursorline
+"set lazyredraw
+set re=1
+set shellslash
+set showcmd
+set wildignorecase
+set wildmenu
+set wildmode=full
+inoremap jk <Esc>
+vnoremap jk <Esc>  
+inoremap <Esc> <nop>
+inoremap `  ``<left>
+inoremap ( (<Space><Space>)<Left><Left>
+inoremap [ [<Space><Space>]<Left><Left>
+inoremap { {<Space><Space>}<left><left>
+inoremap ${ ${<Space><Space>}<left><left>
+inoremap () ()
+inoremap [] []
+inoremap {} {}
+inoremap {<CR> {<CR>}<C-c>O
+inoremap (<CR> (<CR>)<C-c>O
+inoremap [<CR> [<CR>]<C-c>O
+vnoremap <Esc> <nop>
+vnoremap y "+y 
+set clipboard=unnamed 
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <C-up> <nop>
+inoremap <C-down> <nop>
+inoremap <C-left> <nop>
+inoremap <C-right> <nop>
+"vnoremap <up> <nop>
+"vnoremap <up> <nop>
+"vnoremap <down> <nop>
+"vnoremap <left> <nop>
+"vnoremap <right> <nop>
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :<C-u>
+vnoremap : ;
+" "highlight search as you type
+set incsearch
+nnoremap .. .
+
+" Indent line
+nnoremap <> ==$
+
+" Move to end of line
+nnoremap E $
+
+" Move to beginning of line
+nnoremap B ^
+
+" Move to beginning of next word
+" nnoremap w w
+
+" Move to beginning of previous word
+nnoremap W B
+
+" Move to end of next word
+nnoremap e E
+
+" (Visual Mode) Move to end of line
+vnoremap E $h
+
+" (Visual Mode) Move to beginning of line
+vnoremap B ^
+
+" (Visual Mode) Move to beginning of previous word
+vnoremap W B
+
+" (Visual Mode) Move to end of next word
+vnoremap e E
+
+" Move to end of line and start (Insert Mode)
+nnoremap a A
+
+" Move to beginning of line and start (Insert Mode)
+nnoremap A I
+
+" Move to right character and start (Insert Mode)
+nnoremap I li
+
+let mapleader=',' " leader is commas
+let maplocalleader='.' " localleader is period
+
+" Bring current line to top of the window 
+nnoremap zt zt
+" Bring current line to middle of the window
+nnoremap zz zz
+" Bring current line to bottom of the window
+nnoremap zb zb
+
+" Ready to open Bottom-Split
+"nnoremap sh :split<Space>
+
+" Ready to open Right-Split
+"nnoremap sv :vsplit<Space>
+"nnoremap rs :resize<Space>
+set splitright
+set splitbelow
+
+" Move to Left-Split
+nnoremap <C-h> <C-w>h
+
+" Move to Bottom-Split
+nnoremap <C-j> <C-w>j
+
+" Move to Top-Split
+nnoremap <C-k>  <C-w>k
+
+" Move to Right-Split
+nnoremap <C-l>  <C-w>l
+
+" Circle through all the Splits
+nnoremap <C-w> <C-w>w
+
+" Auto-complete for braces & brackets & quotes
+nnoremap J <C-e>
+nnoremap K <C-y>
+nnoremap L zi
+nnoremap H zh
+
+" Page scroll  keymappings
+" <PageDown>
+nnoremap <leader>j <PageDown>
+" <PageUp>
+nnoremap <leader>k <PageUp>
+" <Half-PageDown>
+nnoremap <localleader>j <C-d>
+" <Half-PageUp>
+nnoremap <localleader>k <C-u>
+
+" Toggle hlsearch
+nnoremap <localleader>/ :set hlsearch!<CR>
+
+" (Visual Mode) Toggle hlsearch
+vnoremap <localleader>/ :<C-u>set hlsearch!<CR>
+
+" Close current Split
+nnoremap _ :silent! q<CR>
+
+" Vim Undo History settings
+set undofile
+set undolevels=10000
+set undoreload=10000
+set history=10000
+set tags=./tags;
+set backupdir=$HOME/.vim/backup
+set directory=$HOME/.vim/swap
+set undodir=$HOME/.vim/undo
+set viewdir=$HOME/.vim/view
+set viminfo='1000000,n$HOME/.vim/.viminfo'
+
+" Quit (Command Mode) back to (Normal Mode)
+cnoremap jk <C-c>
+
+" Quit (Selection Mode) back to (Normal Mode)
+snoremap jk <C-c>
+xnoremap jk <C-c>
+
+" Quit (Operator Mode) back to (Normal Mode)
+onoremap jk <C-c>

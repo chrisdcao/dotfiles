@@ -41,40 +41,34 @@ syntax on
 
 set t_ut=
 set mouse=a
+let g:gruvbox_italic=1
+let g:gruvbox_bold=1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
+nmap <C-_>   <Plug>NERDCommenterToggle
+vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
+colorscheme gruvbox
 
 "------------- CHANGE THEME BASE ON THEME -------------"
 let s:lines = readfile(globpath('~','vim_mode.txt'))
 let s:line = s:lines[0]
 
 if s:line == "'WhiteSur-dark-alt'"
-    colorscheme elflord
+    set background=dark
     " set the cursorline to blue only for .py files
-    autocmd Filetype python hi CursorLine guibg=Blue
+    " autocmd Filetype python hi CursorLine guibg=Blue
 else
-    colorscheme xterm16
     set background=light
-    hi CursorLineNr cterm=NONE
-    hi CursorLine cterm=NONE guibg=NONE guifg=NONE ctermfg=NONE ctermbg=NONE
-    autocmd Filetype python hi CursorLine ctermbg=LightGray guibg=#eaeaea
+    " autocmd Filetype python hi CursorLine ctermbg=LightGray guibg=#eaeaea
 endif
 
 "-------------QUICK HIGHLIGHT FOR CERTAIN THEMES-------------"
 " hi! CursorLine guibg=#262626 ctermbg=NONE
 " " hi! CursorLineNR cterm=NONE ctermfg=White ctermbg=Blue guifg=#ffffff guibg=#0000ff
 " hi Boolean ctermfg=Red  guifg=#ff0000
-hi IncSearch guibg=DarkBlue guifg=White cterm=bold
-" hi Search cterm=underline
-" hi! Search cterm=bold
-" hi! IncSearch cterm=bold,reverse
-" hi! Statement cterm=bold
-" hi! Repeat cterm=bold
-" hi! Conditional cterm=bold
-" hi! Number cterm=bold
-" hi! Character cterm=bold
-" hi! Constant cterm=bold
-" hi! Boolean cterm=bold
+" hi IncSearch guibg=DarkBlue guifg=White cterm=bold
+" hi Comment cterm=italic
+" hi Statement cterm=italic
 
 "-------------SPACES & TABS-------------"
 set backspace=indent,eol,start
@@ -108,16 +102,16 @@ set incsearch
 nohlsearch
 
 "------------ CURSOR SHAPE-----------"
-" if has("autocmd")
-  " au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
-  " au InsertEnter,InsertChange *
-    " \ if v:insertmode == 'i' | 
-    " \   silent execute '!echo -ne "\e[5 q"' | redraw! |
-    " \ elseif v:insertmode == 'r' |
-    " \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-    " \ endif
-  " au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-" endif
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' | 
+    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
 
 "-------------STATUS-------------"
 if &compatible
@@ -143,15 +137,19 @@ endif
 filetype plugin indent on
 
 "------------- CHANGE THEME BASE ON THEME -------------"
-if s:line == "'WhiteSur-dark-alt'"
-    let g:lightline = {
-          \ 'colorscheme': 'simpleblack'
-          \ }
-else
-    let g:lightline = {
-          \ 'colorscheme': '16color'
-          \ }
-endif
+" if s:line == "'WhiteSur-dark-alt'"
+    " let g:lightline = {
+          " \ 'colorscheme': 'gruvbox'
+          " \ }
+" else
+    " let g:lightline = {
+          " \ 'colorscheme': 'gruvbox'
+          " \ }
+" endif
+
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox'
+      \ }
 
 " let g:lightline_foobar_bold = 1
 "let g:lightline.enable = {
@@ -273,7 +271,7 @@ nnoremap B ^
 " nnoremap w w
 
 " Move to beginning of previous word
-nnoremap W b
+nnoremap W B
 
 " Move to end of next word
 nnoremap e E
@@ -285,7 +283,7 @@ vnoremap E $h
 vnoremap B ^
 
 " (Visual Mode) Move to beginning of previous word
-vnoremap W b
+vnoremap W B
 
 " (Visual Mode) Move to end of next word
 vnoremap e E
@@ -319,16 +317,16 @@ set splitright
 set splitbelow
 
 " Move to Left-Split
-nnoremap <C-h> <C-w>h
+nnoremap <C-left> <C-w>h
 
 " Move to Bottom-Split
-nnoremap <C-j> <C-w>j
+nnoremap <C-down> <C-w>j
 
 " Move to Top-Split
-nnoremap <C-k>  <C-w>k
+nnoremap <C-up>  <C-w>k
 
 " Move to Right-Split
-nnoremap <C-l>  <C-w>l
+nnoremap <C-right>  <C-w>l
 
 " Circle through all the Splits
 nnoremap <C-w> <C-w>w
