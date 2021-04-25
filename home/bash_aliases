@@ -11,6 +11,7 @@ alias "reload"="source ~/.bashrc"
 alias "q"="exit"
 alias "wq"="exit"
 alias "whatmono"="gsettings get org.gnome.desktop.interface monospace-font-name"
+alias "gtk-conf"=" cd ~/.config/gtk-3.0 && vim gtk.css"
 # using c++ 17 as default
 alias "g++"="g++ -std=c++17"
 

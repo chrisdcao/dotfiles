@@ -49,7 +49,7 @@ nmap <C-_>   <Plug>NERDCommenterToggle<down>
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 imap <C-_>   <Esc><C-_>i
 
-"------------- CHANGE THEME BASE ON THEME -------------"
+"------------- CHANGE THEME BASE ON SYSTEM THEME -------------"
 let s:lines = readfile(globpath('~','vim_mode.txt'))
 let s:line = s:lines[0]
 
@@ -65,6 +65,7 @@ if s:line == "'WhiteSur-dark-alt'"
     hi! Normal guifg=#ffeeee
     hi! CursorLine ctermbg=NONE guibg=NONE
     hi! CursorLineNr ctermbg=NONE guibg=NONE 
+    hi! MatchParen cterm=NONE gui=NONE
 else
     colorscheme gruvbox
     set background=light
@@ -100,6 +101,8 @@ set autoindent
 set shiftwidth=4
 
 "-------------UI CONFIG-------------"
+
+set guifont=Fixedsys\ Excelsior\ 12
 set noshowmode
 set rnu
 set number
@@ -121,16 +124,18 @@ set incsearch
 nohlsearch
 
 "------------ CURSOR SHAPE-----------"
-" if has("autocmd")
-  " au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
-  " au InsertEnter,InsertChange *
-    " \ if v:insertmode == 'i' | 
-    " \   silent execute '!echo -ne "\e[5 q"' | redraw! |
-    " \ elseif v:insertmode == 'r' |
-    " \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-    " \ endif
-  " au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-" endif
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' | 
+    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    \ endif
+  " since tmux is affected by the setting of vimrc, we have to choose the right character to draw the <caret> when leave vim. This set the caret to be I-beam (match with the current settings). Other options include:
+  " + block: \e[ q
+  au VimLeave * silent execute '!echo -ne "\e[5 q"' | redraw!
+endif
 
 "-------------STATUS-------------"
 if &compatible
