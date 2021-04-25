@@ -5,8 +5,14 @@ alias "off"="shutdown -h now"
 alias "schema"="vim /usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.xml"
 alias "remove"="sudo apt remove -y"
 alias "install"="sudo apt install -y"
-alias "quit"="exit"
+alias "upgrade"="sudo apt upgrade -y"
+alias "update"="sudo apt update -y"
 alias "reload"="source ~/.bashrc"
+alias "q"="exit"
+alias "wq"="exit"
+alias "whatmono"="gsettings get org.gnome.desktop.interface monospace-font-name"
+# using c++ 17 as default
+alias "g++"="g++ -std=c++17"
 
 alias "algos"="cd Algos_4th_Solutions/"
 alias "algoc"="cd Algos_Collection/"
@@ -26,6 +32,7 @@ alias "s6"="cd Section\ 6\ \(Reviewing\)/"
 alias "vimt"="vim -c 'NERDTree'"
 
 # TMUX
+alias "qtmux"="tmux kill-server"
 
 # GITHUB
 alias "commat"="git add -A; git commit"
@@ -61,4 +68,5 @@ alias "learnann"="cd ~/GRDAI_Documents/In\ Progress\ -\ Udemy\ -\ Deep\ Learning
 alias "learnrnn"="cd ~/GRDAI_Documents/Introduction\ To\ Machine\ Learning\ Deep\ Learning\ In\ Python/RNN/"
 alias "spd"="source ~/conda_init.sh && conda activate && spyder"
 
-
+# ANDROID STUDIO
+alias "as"="cd ~/android-studio/bin && ./studio.sh"

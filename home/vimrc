@@ -8,7 +8,7 @@ filetype plugin indent on    " required
 let g:jedi#goto_command = "<leader>c"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = "<leader>f"
+let g:jedi#goto_definitions_command = "<leader>e"
 let g:jedi#documentation_command = "<leader>d"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
@@ -45,22 +45,41 @@ let g:gruvbox_italic=1
 let g:gruvbox_bold=1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
-nmap <C-_>   <Plug>NERDCommenterToggle
+nmap <C-_>   <Plug>NERDCommenterToggle<down>
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
-colorscheme gruvbox
+imap <C-_>   <Esc><C-_>i
 
 "------------- CHANGE THEME BASE ON THEME -------------"
 let s:lines = readfile(globpath('~','vim_mode.txt'))
 let s:line = s:lines[0]
 
 if s:line == "'WhiteSur-dark-alt'"
-    set background=dark
+    colorscheme monokai_pro
     " set the cursorline to blue only for .py files
     " autocmd Filetype python hi CursorLine guibg=Blue
+    " hi! Normal guifg=#fbf1c7 ctermfg=229
+    " hi! Structure gui=italic cterm=italic guifg=#8ec07c ctermfg=108
+    " hi! StorageClass gui=italic cterm=italic guifg=#fe8019 ctermfg=208
+    " hi! Repeat gui=italic cterm=italic guifg=#fb4934 ctermfg=167
+    " hi! Conditional gui=italic cterm=italic guifg=#fb4934 ctermfg=167
+    hi! Normal guifg=#ffeeee
+    hi! CursorLine ctermbg=NONE guibg=NONE
+    hi! CursorLineNr ctermbg=NONE guibg=NONE 
 else
+    colorscheme gruvbox
     set background=light
+    hi! Normal guifg=#282828 ctermfg=235
+    hi! Structure gui=italic cterm=italic guifg=#427b58 ctermfg=108
+    hi! StorageClass gui=italic cterm=italic guifg=#af3a03 ctermfg=130
+    hi! Repeat gui=italic cterm=italic guifg=#9d0006 ctermfg=88
+    hi! Conditional gui=italic cterm=italic guifg=#9d0006 ctermfg=88
+    hi! operator cterm=italic gui=italic guifg=#8f3f71 ctermfg=132
+    hi! CursorLine ctermbg=NONE guibg=NONE
+    hi! CursorLineNr ctermbg=NONE guibg=NONE
+    hi! MatchParen cterm=NONE gui=NONE guifg=#d65d0e ctermfg=72 guibg=NONE ctermbg=NONE
     " autocmd Filetype python hi CursorLine ctermbg=LightGray guibg=#eaeaea
 endif
+
 
 "-------------QUICK HIGHLIGHT FOR CERTAIN THEMES-------------"
 " hi! CursorLine guibg=#262626 ctermbg=NONE
@@ -102,16 +121,16 @@ set incsearch
 nohlsearch
 
 "------------ CURSOR SHAPE-----------"
-if has("autocmd")
-  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
-  au InsertEnter,InsertChange *
-    \ if v:insertmode == 'i' | 
-    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
-    \ elseif v:insertmode == 'r' |
-    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
-    \ endif
-  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
-endif
+" if has("autocmd")
+  " au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  " au InsertEnter,InsertChange *
+    " \ if v:insertmode == 'i' | 
+    " \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    " \ elseif v:insertmode == 'r' |
+    " \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    " \ endif
+  " au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+" endif
 
 "-------------STATUS-------------"
 if &compatible
@@ -137,19 +156,19 @@ endif
 filetype plugin indent on
 
 "------------- CHANGE THEME BASE ON THEME -------------"
-" if s:line == "'WhiteSur-dark-alt'"
-    " let g:lightline = {
-          " \ 'colorscheme': 'gruvbox'
-          " \ }
-" else
-    " let g:lightline = {
-          " \ 'colorscheme': 'gruvbox'
-          " \ }
-" endif
+if s:line == "'WhiteSur-dark-alt'"
+    let g:lightline = {
+          \ 'colorscheme': 'monokai_pro'
+          \ }
+else
+    let g:lightline = {
+          \ 'colorscheme': 'gruvbox'
+          \ }
+endif
 
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox'
-      \ }
+" let g:lightline = {
+      " \ 'colorscheme': 'gruvbox'
+      " \ }
 
 " let g:lightline_foobar_bold = 1
 "let g:lightline.enable = {
@@ -168,6 +187,8 @@ nnoremap <leader>r :resize -30<cr>
 nnoremap <F12> :TagbarToggle<CR>
 inoremap <F12> :TagbarToggle<CR>
 vnoremap <F12> :TagbarToggle<CR>
+
+imap <C-a> <Esc>a
 "TREE
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -175,10 +196,10 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 "resize splits
-" nnoremap <C-Up> :resize +1<CR>
-" nnoremap <C-Down> :resize -1<CR>
-" nnoremap <C-Left> :vertical resize +1<CR>
-" nnoremap <C-Right> :vertical resize -1<CR>
+nnoremap <C-Up> :resize +1<CR>
+nnoremap <C-Down> :resize -1<CR>
+nnoremap <C-Left> :vertical resize +1<CR>
+nnoremap <C-Right> :vertical resize -1<CR>
 
 nnoremap tf  :tabfirst<CR>
 nnoremap gt  :tabnext<CR>
@@ -229,22 +250,22 @@ set wildmenu
 set wildmode=full
 inoremap jk <Esc>
 vnoremap jk <Esc>  
-inoremap <Esc> <nop>
-vnoremap <Esc> <nop>
+" inoremap <Esc> <nop>
+" vnoremap <Esc> <nop>
 vnoremap y "+y 
 set clipboard=unnamed 
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
 "nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-inoremap <C-up> <nop>
-inoremap <C-down> <nop>
-inoremap <C-left> <nop>
-inoremap <C-right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+" inoremap <C-up> <nop>
+" inoremap <C-down> <nop>
+" inoremap <C-left> <nop>
+" inoremap <C-right> <nop>
 "vnoremap <up> <nop>
 "vnoremap <up> <nop>
 "vnoremap <down> <nop>
@@ -317,16 +338,16 @@ set splitright
 set splitbelow
 
 " Move to Left-Split
-nnoremap <C-left> <C-w>h
+" nnoremap <C-left> <C-w>h
 
 " Move to Bottom-Split
-nnoremap <C-down> <C-w>j
+" nnoremap <C-down> <C-w>j
 
 " Move to Top-Split
-nnoremap <C-up>  <C-w>k
+" nnoremap <C-up>  <C-w>k
 
 " Move to Right-Split
-nnoremap <C-right>  <C-w>l
+" nnoremap <C-right>  <C-w>l
 
 " Circle through all the Splits
 nnoremap <C-w> <C-w>w
@@ -344,18 +365,24 @@ inoremap ` ``<left>
 inoremap "" ""
 inoremap '' ''
 inoremap `` ``
-inoremap ( ()<left>
+inoremap ( ()<Left>
 inoremap [ []<left>
-inoremap { {}<left>
+inoremap {<space> {<Space><Space><space><space><space><space>}<left><left><left><left>
 inoremap () ()
 inoremap [] []
 inoremap {} {}
+inoremap (<Esc> ()
+inoremap [<Esc> []
+inoremap {<Esc> {}
+inoremap { {}<left>
+nnoremap <C-w> va{zf
+inoremap <C-w> <Esc>va{zfo
 inoremap <> <><left>
 inoremap /* /*<Space><Space>*/<left><left><left>
-inoremap (<Space> (  )<C-c><left>i
-inoremap [<Space> [  ]<C-c><left>i
-inoremap {<Space> {  }<C-c><left>i
-inoremap {<CR> {<CR>}<C-c>O
+" inoremap (<Space> (  )<C-c><left>i
+" inoremap [<Space> [  ]<C-c><left>i
+" inoremap {<Space> {  }<C-c><left>i
+inoremap {<CR> <CR>{<CR>}<C-c>O
 inoremap (<CR> (<CR>)<C-c>O
 inoremap [<CR> [<CR>]<C-c>O
 nnoremap J <C-e>

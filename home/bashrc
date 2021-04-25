@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-source ~/auto_darkmode_theme.sh
+source ~/.auto_darkmode_theme.sh
 
 # If not running interactively, don't do anything
 case $- in
