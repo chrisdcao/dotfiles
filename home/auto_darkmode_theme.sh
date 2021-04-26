@@ -2,6 +2,7 @@
 # set the cursor color to be changable
 # gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-colors-set true
 # calling variable for later usage
+echo -ne '\e[5 q'
 defaultprofile=$(gsettings get org.gnome.Terminal.ProfilesList default)
 profileID=$(echo "$defaultprofile" | cut -d "'" -f 2)
 theme=$(gsettings get org.gnome.desktop.interface gtk-theme)

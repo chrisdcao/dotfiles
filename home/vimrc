@@ -124,6 +124,7 @@ set incsearch
 nohlsearch
 
 "------------ CURSOR SHAPE-----------"
+"under terminal and vim
 if has("autocmd")
   au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
   au InsertEnter,InsertChange *
@@ -193,7 +194,6 @@ nnoremap <F12> :TagbarToggle<CR>
 inoremap <F12> :TagbarToggle<CR>
 vnoremap <F12> :TagbarToggle<CR>
 
-imap <C-a> <Esc>a
 "TREE
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -292,6 +292,7 @@ nnoremap E $
 
 " Move to beginning of line
 nnoremap B ^
+inoremap <C-a> <Esc>A
 
 " Move to beginning of next word
 " nnoremap w w
