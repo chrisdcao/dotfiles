@@ -54,30 +54,33 @@ let s:lines = readfile(globpath('~','vim_mode.txt'))
 let s:line = s:lines[0]
 
 if s:line == "'WhiteSur-dark-alt'"
-    colorscheme monokai_pro
+    colorscheme shades_of_purple
+    " set background=dark
     " set the cursorline to blue only for .py files
     " autocmd Filetype python hi CursorLine guibg=Blue
     " hi! Normal guifg=#fbf1c7 ctermfg=229
     " hi! Structure gui=italic cterm=italic guifg=#8ec07c ctermfg=108
     " hi! StorageClass gui=italic cterm=italic guifg=#fe8019 ctermfg=208
+    " hi! MatchParen cterm=bold guibg=NONE ctermbg=NONE guifg=#fe8019 ctermfg=208
     " hi! Repeat gui=italic cterm=italic guifg=#fb4934 ctermfg=167
     " hi! Conditional gui=italic cterm=italic guifg=#fb4934 ctermfg=167
-    hi! Normal guifg=#ffeeee
-    hi! CursorLine ctermbg=NONE guibg=NONE
-    hi! CursorLineNr ctermbg=NONE guibg=NONE 
-    hi! MatchParen cterm=NONE gui=NONE
+    hi! CursorLine ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
+    hi! CursorLineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
+    " hi! Normal guifg=#ffeeee
+    " hi! CursorLine ctermbg=NONE guibg=NONE
 else
-    colorscheme gruvbox
-    set background=light
-    hi! Normal guifg=#282828 ctermfg=235
-    hi! Structure gui=italic cterm=italic guifg=#427b58 ctermfg=108
-    hi! StorageClass gui=italic cterm=italic guifg=#af3a03 ctermfg=130
-    hi! Repeat gui=italic cterm=italic guifg=#9d0006 ctermfg=88
-    hi! Conditional gui=italic cterm=italic guifg=#9d0006 ctermfg=88
-    hi! operator cterm=italic gui=italic guifg=#8f3f71 ctermfg=132
-    hi! CursorLine ctermbg=NONE guibg=NONE
-    hi! CursorLineNr ctermbg=NONE guibg=NONE
-    hi! MatchParen cterm=NONE gui=NONE guifg=#d65d0e ctermfg=72 guibg=NONE ctermbg=NONE
+    colorscheme xcode
+    " hi! Normal guifg=#000000 ctermfg=black
+    " hi! Normal guifg=#282828 ctermfg=235
+    " hi! Structure gui=italic cterm=italic guifg=#427b58 ctermfg=108
+    " hi! StorageClass gui=italic cterm=italic guifg=#af3a03 ctermfg=130
+    " hi! Repeat gui=italic cterm=italic guifg=#9d0006 ctermfg=88
+    " hi! Conditional gui=italic cterm=italic guifg=#9d0006 ctermfg=88
+    " hi! operator cterm=italic gui=italic guifg=#8f3f71 ctermfg=132
+    " hi! CursorLine ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
+    " hi! CursorLineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
+    hi! LineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE guifg=#bcbcbc ctermfg=250
+    " hi! MatchParen cterm=NONE gui=NONE guifg=#d65d0e ctermfg=72 guibg=NONE ctermbg=NONE
     " autocmd Filetype python hi CursorLine ctermbg=LightGray guibg=#eaeaea
 endif
 
@@ -135,7 +138,7 @@ if has("autocmd")
     \ endif
   " since tmux is affected by the setting of vimrc, we have to choose the right character to draw the <caret> when leave vim. This set the caret to be I-beam (match with the current settings). Other options include:
   " + block: \e[ q
-  au VimLeave * silent execute '!echo -ne "\e[5 q"' | redraw!
+  au VimLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
 endif
 
 "-------------STATUS-------------"
@@ -164,11 +167,11 @@ filetype plugin indent on
 "------------- CHANGE THEME BASE ON THEME -------------"
 if s:line == "'WhiteSur-dark-alt'"
     let g:lightline = {
-          \ 'colorscheme': 'monokai_pro'
+          \ 'colorscheme': 'shades_of_purple'
           \ }
 else
     let g:lightline = {
-          \ 'colorscheme': 'gruvbox'
+          \ 'colorscheme': 'wwdc17_alter'
           \ }
 endif
 
@@ -259,6 +262,10 @@ vnoremap jk <Esc>
 " vnoremap <Esc> <nop>
 vnoremap y "+y 
 set clipboard=unnamed 
+inoremap <C-l> <right>
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
@@ -292,7 +299,7 @@ nnoremap E $
 
 " Move to beginning of line
 nnoremap B ^
-inoremap <C-a> <Esc>A
+
 
 " Move to beginning of next word
 " nnoremap w w
@@ -371,16 +378,23 @@ inoremap ` ``<left>
 inoremap "" ""
 inoremap '' ''
 inoremap `` ``
-inoremap ( ()<Left>
-inoremap [ []<left>
-inoremap {<space> {<Space><Space><space><space><space><space>}<left><left><left><left>
+
+inoremap ( (<Space><Space>)<Left><left>
+inoremap [ [<Space><space>]<left><left>
+inoremap { {<Space><Space>}<left><left>
+
+inoremap (<Space> (<Space><Space>)<Left><left>
+inoremap [<Space> [<Space><space>]<left><left>
+inoremap {<Space> {<Space><Space>}<left><left>
+
 inoremap () ()
 inoremap [] []
 inoremap {} {}
-inoremap (<Esc> ()
-inoremap [<Esc> []
-inoremap {<Esc> {}
-inoremap { {}<left>
+
+inoremap (<Esc> ()<left>
+inoremap [<Esc> []<left>
+inoremap {<Esc> {}<left>
+
 nnoremap <C-w> va{zf
 inoremap <C-w> <Esc>va{zfo
 inoremap <> <><left>
@@ -388,7 +402,7 @@ inoremap /* /*<Space><Space>*/<left><left><left>
 " inoremap (<Space> (  )<C-c><left>i
 " inoremap [<Space> [  ]<C-c><left>i
 " inoremap {<Space> {  }<C-c><left>i
-inoremap {<CR> <CR>{<CR>}<C-c>O
+inoremap {<CR> {<CR>}<C-c>O
 inoremap (<CR> (<CR>)<C-c>O
 inoremap [<CR> [<CR>]<C-c>O
 nnoremap J <C-e>
