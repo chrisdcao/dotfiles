@@ -1,9 +1,25 @@
-"-------------VIM - JEDI-------------"
+"------------- PLUGINS --------------"
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
-call vundle#end()            " required
+Plugin 'preservim/vimux'
+call vundle#end()            
+
+"-------------- VIMUX ---------------"
+ " Run the current file with rspec
+ map <S-F10> ;call VimuxRunCommand("g++ -o " . expand('%:t:r ') . " " . bufname("%"))<CR>
+ " Run command without sending a return
+ " map <F10> ;call VimuxRunCommand("clear; rspec " . bufname("%"), 0)<CR>
+ " Prompt for a command to run map
+ map <F12> ;VimuxPromptCommand<CR>
+ map <F6> ;VimuxPromptCommand("make ")<CR>
+ " Run last command executed by VimuxRunCommand
+ map ,l ;VimuxRunLastCommand<CR>
+
+"------------ VIM - JEDI ------------"
 filetype plugin indent on    " required
 let g:jedi#goto_command = "<leader>c"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -17,13 +33,13 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#use_splits_not_buffers = "bottom"
 let g:pymode_rope = 0
 
-"-------------CUSTOM SETTINGS ONLY FOR PY-------------"
+"--- CUSTOM SETTINGS ONLY FOR PY ---"
 " stop the docstring from pop up whenever we finish a type
 autocmd FileType python setlocal completeopt-=preview
 " add the print full array options at the beginning of a new empty python file
 autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
 
-"-------------COLORS-------------"
+"------------- COLORS --------------"
 if (has("nvim"))
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
@@ -64,8 +80,8 @@ if s:line == "'WhiteSur-dark-alt'"
     " hi! MatchParen cterm=bold guibg=NONE ctermbg=NONE guifg=#fe8019 ctermfg=208
     " hi! Repeat gui=italic cterm=italic guifg=#fb4934 ctermfg=167
     " hi! Conditional gui=italic cterm=italic guifg=#fb4934 ctermfg=167
-    hi! CursorLine ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
-    hi! CursorLineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
+    " hi! CursorLine ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
+    " hi! CursorLineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
     " hi! Normal guifg=#ffeeee
     " hi! CursorLine ctermbg=NONE guibg=NONE
 else
@@ -192,11 +208,6 @@ set showtabline=2
 set laststatus=2
 
 "-------------REMAP-------------"
-nnoremap <leader>r :resize -30<cr>
-nnoremap <F12> :TagbarToggle<CR>
-inoremap <F12> :TagbarToggle<CR>
-vnoremap <F12> :TagbarToggle<CR>
-
 "TREE
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>

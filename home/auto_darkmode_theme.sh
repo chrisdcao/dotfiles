@@ -20,14 +20,14 @@ echo -ne '\e[1 q'
 # then
     # gsettings set org.gnome.desktop.background picture-uri ~/Pictures/BigSur/bigsur2.xml
 # fi
-
+export TERM=xterm-256color
 if [[ $theme == "'WhiteSur-dark-alt'" ]]
 then
     # shades_of_purple
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ highlight-colors-set true 
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ highlight-background-color '#7d44b2'
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ highlight-foreground-color '#E1EFFF'
-    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ background-color 'rgb(45,43,85)'
+    gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ background-color '#1e1e3f'
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ foreground-color 'rgb(225,239,255)'
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-colors-set true
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-foreground-color 'rgb(0,0,0)' 
@@ -83,12 +83,12 @@ else
     # gsettings set org.gnome.desktop.interface monospace-font-name 'Cartograph CF Regular 10'
     dconf write /org/gnome/terminal/legacy/profiles:/:0b0410a3-164b-4b3c-8d11-b104a8bec905/palette "['rgb(38,38,38)', 
                                                                                                      'rgb(209,47,27)', 
-                                                                                                     'rgb(45,133,4)', 
+                                                                                                     '#008311', 
                                                                                                      'rgb(120,73,42)', 
                                                                                                      'rgb(15,104,160)', 
-                                                                                                     'rgb(128,79,184)', 
+                                                                                                     'rgb(173,61,164)', 
                                                                                                      'rgb(62,128,135)', 
-                                                                                                     'rgb(180,216,253)', 
+                                                                                                     'rgb(128,79,184)', 
 
                                                                                                      'rgb(38,38,38)', 
                                                                                                      'rgb(209,47,27)', 
