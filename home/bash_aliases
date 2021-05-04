@@ -5,6 +5,7 @@ alias "off"="shutdown -h now"
 alias "schema"="vim /usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.xml"
 alias "remove"="sudo apt remove -y"
 alias "install"="sudo apt install -y"
+alias "dotfiles"="cd ~/.dotfiles"
 alias "upgrade"="sudo apt upgrade -y"
 alias "update"="sudo apt update -y"
 alias "reload"="source ~/.bashrc"
@@ -15,8 +16,8 @@ alias "gtk-conf"=" cd ~/.config/gtk-3.0 && vim gtk.css"
 # using c++ 17 as default
 alias "g++"="g++ -std=c++17"
 
-alias "algos"="cd Algos_4th_Solutions/"
-alias "algoc"="cd Algos_Collection/"
+alias "algos"="cd ~/Algos_4th_Solutions/"
+alias "algoc"="cd ~/Algos_Collection/"
 
 alias "c2"="cd Chapter_02/"
 alias "c3"="cd Chapter_03/"

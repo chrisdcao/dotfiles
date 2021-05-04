@@ -10,11 +10,11 @@ call vundle#end()
 
 "-------------- VIMUX ---------------"
  " Run the current file with rspec
- map <S-F10> ;call VimuxRunCommand("g++ -o " . expand('%:t:r ') . " " . bufname("%"))<CR>
+ map <S-F10> ;call VimuxRunCommand("g++ -o " . expand('%:t:r ') . " " . bufname("%") . " && ./" . expand('%:t:r'))<CR>
  " Run command without sending a return
- " map <F10> ;call VimuxRunCommand("clear; rspec " . bufname("%"), 0)<CR>
+ map <S-F9> ;call VimuxRunCommand("g++db -o " . expand('%:t:r ') . " " . bufname("%") . "\n tmux select-pane -D \n gdb " . expand('%:t:r') . "\n\n\n", 0)<CR><CR>
  " Prompt for a command to run map
- map <F12> ;VimuxPromptCommand<CR>
+ map ,t ;VimuxPromptCommand<CR>
  map <F6> ;VimuxPromptCommand("make ")<CR>
  " Run last command executed by VimuxRunCommand
  map ,l ;VimuxRunLastCommand<CR>
@@ -71,6 +71,8 @@ let s:line = s:lines[0]
 
 if s:line == "'WhiteSur-dark-alt'"
     colorscheme shades_of_purple
+    let g:shades_of_purple_italic = 1
+    let g:shades_of_purple_bold = 1
     " set background=dark
     " set the cursorline to blue only for .py files
     " autocmd Filetype python hi CursorLine guibg=Blue

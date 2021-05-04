@@ -23,7 +23,7 @@ echo -ne '\e[1 q'
 export TERM=xterm-256color
 if [[ $theme == "'WhiteSur-dark-alt'" ]]
 then
-    gsettings set org.gnome.desktop.interface monospace-font-name 'Fixedsys Excelsior 12'
+    gsettings set org.gnome.desktop.interface monospace-font-name 'Terminus Medium 12'
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ bold-is-bright true
     gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profileID/ cursor-colors-set true
 
