@@ -71,18 +71,32 @@ inoremap jk <Esc>
 vnoremap jk <Esc>  
 inoremap <Esc> <nop>
 inoremap `  ``<left>
-inoremap ( (<Space><Space>)<Left><Left>
-inoremap [ [<Space><Space>]<Left><Left>
+
+inoremap ( (<Space><Space>)<Left><left>
+inoremap [ [<Space><space>]<left><left>
 inoremap { {<Space><Space>}<left><left>
-inoremap ${ ${<Space><Space>}<left><left>
+
+inoremap (<Space> (<Space><Space>)<Left><left>
+inoremap [<Space> [<Space><space>]<left><left>
+inoremap {<Space> {<Space><Space>}<left><left>
+
 inoremap () ()
 inoremap [] []
 inoremap {} {}
+inoremap <> <><left>
+
+inoremap (<Esc> ()
+inoremap [<Esc> []
+inoremap {<Esc> {}
+
 inoremap {<CR> {<CR>}<C-c>O
 inoremap (<CR> (<CR>)<C-c>O
 inoremap [<CR> [<CR>]<C-c>O
+
 vnoremap <Esc> <nop>
 vnoremap y "+y 
+nnoremap <CR> <Esc>o
+
 set clipboard=unnamed 
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>

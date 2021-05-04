@@ -63,7 +63,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 nmap <C-_>   <Plug>NERDCommenterToggle<down>
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
-imap <C-_>   <Esc><C-_>i
+imap <C-_>   <Esc><C-_>
 
 "------------- CHANGE THEME BASE ON SYSTEM THEME -------------"
 let s:lines = readfile(globpath('~','vim_mode.txt'))
