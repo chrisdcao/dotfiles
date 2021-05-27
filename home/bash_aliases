@@ -1,9 +1,12 @@
 # TERMINAL
 alias "showpath"="readlink -f"
+alias "spacy"="python3 -m spacy"
 alias "symlink"="ln -s"
 alias "off"="shutdown -h now"
 alias "schema"="vim /usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.xml"
+alias "algor"="~/Desktop/algorithms-sedgewick-wayne-master/"
 alias "remove"="sudo apt remove -y"
+alias "purge"="sudo apt-get purge -y"
 alias "install"="sudo apt install -y"
 alias "dotfiles"="cd ~/.dotfiles"
 alias "upgrade"="sudo apt upgrade -y"
@@ -15,6 +18,7 @@ alias "whatmono"="gsettings get org.gnome.desktop.interface monospace-font-name"
 alias "gtk-conf"=" cd ~/.config/gtk-3.0 && vim gtk.css"
 # using c++ 17 as default
 alias "g++"="g++ -std=c++17"
+alias "nlp-service"="vncorenlp -Xmx2g /home/khanhcao96/Downloads/VnCoreNLP-master/VnCoreNLP-1.1.1.jar -p 9000 -a "wseg,pos,ner""
 
 alias "algos"="cd ~/Algos_4th_Solutions/"
 alias "algoc"="cd ~/Algos_Collection/"

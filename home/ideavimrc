@@ -4,6 +4,7 @@ set guifont=Operator\ Mono\ Lig\ Book:h14
 set rnu
 set number
 set showcmd
+set mouse=a
 
 "set cursorcolumn
 " filetype indent on
@@ -72,12 +73,11 @@ vnoremap jk <Esc>
 inoremap <Esc> <nop>
 inoremap `  ``<left>
 
-inoremap ( (<Space><Space>)<Left><left>
-inoremap [ [<Space><space>]<left><left>
+" inoremap (<Space> (<Space><Space>)<Left><left>
+" inoremap [<Space> [<Space><space>]<left><left>
+inoremap ( ()<Left>
+inoremap [ []<left>
 inoremap { {<Space><Space>}<left><left>
-
-inoremap (<Space> (<Space><Space>)<Left><left>
-inoremap [<Space> [<Space><space>]<left><left>
 inoremap {<Space> {<Space><Space>}<left><left>
 
 inoremap () ()

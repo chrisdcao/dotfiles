@@ -1,6 +1,6 @@
 try
     " Highlight Class and Function names
-    syn match    cCustomParen    "(" contains=cParen,cCppParen
+    syn match    cCustomParen    "(" contains=cParen
     syn match    cCustomFunc     "\w\+\s*(" contains=cCustomParen
     syn match    cCustomScope    "::"
     syn match    cCustomClass    "\w\+\s*::" contains=cCustomScope
@@ -30,6 +30,26 @@ try
     elseif g:colors_name == 'srcery'
         hi def link cCustomFunc Function 
         hi def link cCustomClass Function
+    elseif g:colors_name == 'xcodedark'
+        hi def link cCustomFunc Function 
+        hi def link cCustomClass Function
+        hi link coolOperator Operator
+    elseif g:colors_name == 'badwolf'
+        hi def link cCustomFunc Function 
+        hi def link cCustomClass Function
+        hi link coolOperator Operator
+    elseif g:colors_name == 'dracula'
+        hi def link cCustomFunc Function 
+        hi def link cCustomClass Function
+        hi link coolOperator Function
+    elseif g:colors_name == 'codedark'
+        hi def link cCustomFunc cFunction 
+        hi def link cCustomClass cFunction
+        hi link coolOperator Operator
+    else
+        hi def link cCustomFunc Function 
+        hi def link cCustomClass Function
+        hi link coolOperator Function
     endif
     " this is to avoid warning message when xterm16 ( the default color ) is used
 catch /^Vim\%((\a\+)\)\=:E121/

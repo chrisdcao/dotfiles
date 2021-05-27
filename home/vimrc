@@ -9,22 +9,23 @@ Plugin 'preservim/vimux'
 call vundle#end()            
 
 "-------------- VIMUX ---------------"
- " Run the current file with rspec
- map <S-F10> ;call VimuxRunCommand("g++ -o " . expand('%:t:r ') . " " . bufname("%") . " && ./" . expand('%:t:r'))<CR>
- " Run command without sending a return
- map <S-F9> ;call VimuxRunCommand("g++db -o " . expand('%:t:r ') . " " . bufname("%") . "\n tmux select-pane -D \n gdb " . expand('%:t:r') . "\n\n\n", 0)<CR><CR>
- " Prompt for a command to run map
- map ,t ;VimuxPromptCommand<CR>
- map <F6> ;VimuxPromptCommand("make ")<CR>
- " Run last command executed by VimuxRunCommand
- map ,l ;VimuxRunLastCommand<CR>
+" Run the current file with rspec
+map <S-F10> ;call VimuxRunCommand("g++ -o " . expand('%:t:r ') . " " . bufname("%") . " && ./" . expand('%:t:r'))<CR>
+" map <F5> ;call VimuxRunCommand("py3 " . bufname("%"))<CR>
+" Run command without sending a return
+map <S-F9> ;call VimuxRunCommand("g++db -o " . expand('%:t:r ') . " " . bufname("%") . "\n tmux select-pane -D \n gdb " . expand('%:t:r') . "\n\n\n", 0)<CR><CR>
+" Prompt for a command to run map
+map ,t ;VimuxPromptCommand<CR>
+map ,m ;VimuxPromptCommand("mv " . bufname("%") . " " . expand('%:t:r ') . "_review_correct_same.cc")<CR>
+" Run last command executed by VimuxRunCommand
+map ,l ;VimuxRunLastCommand<CR>
 
 "------------ VIM - JEDI ------------"
 filetype plugin indent on    " required
 let g:jedi#goto_command = "<leader>c"
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = "<leader>e"
+let g:jedi#goto_definitions_command = "<leader>f"
 let g:jedi#documentation_command = "<leader>d"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
@@ -70,9 +71,12 @@ let s:lines = readfile(globpath('~','vim_mode.txt'))
 let s:line = s:lines[0]
 
 if s:line == "'WhiteSur-dark-alt'"
-    colorscheme shades_of_purple
-    let g:shades_of_purple_italic = 1
-    let g:shades_of_purple_bold = 1
+    colorscheme codedark
+    " let g:dracula_bold = 1
+    " let g:dracula_italic = 1
+    " let g:dracula_underline = 1
+    " let g:shades_of_purple_italic = 1
+    " let g:shades_of_purple_bold = 1
     " set background=dark
     " set the cursorline to blue only for .py files
     " autocmd Filetype python hi CursorLine guibg=Blue
@@ -87,7 +91,7 @@ if s:line == "'WhiteSur-dark-alt'"
     " hi! Normal guifg=#ffeeee
     " hi! CursorLine ctermbg=NONE guibg=NONE
 else
-    colorscheme xcode
+    colorscheme xcode-default 
     " hi! Normal guifg=#000000 ctermfg=black
     " hi! Normal guifg=#282828 ctermfg=235
     " hi! Structure gui=italic cterm=italic guifg=#427b58 ctermfg=108
@@ -97,7 +101,7 @@ else
     " hi! operator cterm=italic gui=italic guifg=#8f3f71 ctermfg=132
     " hi! CursorLine ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
     " hi! CursorLineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
-    hi! LineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE guifg=#bcbcbc ctermfg=250
+    " hi! LineNr ctermbg=NONE guibg=NONE cterm=NONE gui=NONE guifg=#bcbcbc ctermfg=250
     " hi! MatchParen cterm=NONE gui=NONE guifg=#d65d0e ctermfg=72 guibg=NONE ctermbg=NONE
     " autocmd Filetype python hi CursorLine ctermbg=LightGray guibg=#eaeaea
 endif
@@ -185,7 +189,7 @@ filetype plugin indent on
 "------------- CHANGE THEME BASE ON THEME -------------"
 if s:line == "'WhiteSur-dark-alt'"
     let g:lightline = {
-          \ 'colorscheme': 'shades_of_purple'
+          \ 'colorscheme': 'codedark'
           \ }
 else
     let g:lightline = {
@@ -392,21 +396,21 @@ inoremap "" ""
 inoremap '' ''
 inoremap `` ``
 
-inoremap ( (<Space><Space>)<Left><left>
-inoremap [ [<Space><space>]<left><left>
-inoremap { {<Space><Space>}<left><left>
+" inoremap ( (<Space><Space>)<Left><left>
+" inoremap [ [<Space><space>]<left><left>
+" inoremap { {<Space><Space>}<left><left>
 
-inoremap (<Space> (<Space><Space>)<Left><left>
-inoremap [<Space> [<Space><space>]<left><left>
+" inoremap (<Space> (<Space><Space>)<Left><left>
+" inoremap [<Space> [<Space><space>]<left><left>
+inoremap ( ()<left>
+inoremap [ []<left>
 inoremap {<Space> {<Space><Space>}<left><left>
+inoremap { {}<left>
 
 inoremap () ()
 inoremap [] []
 inoremap {} {}
 
-inoremap (<Esc> ()<left>
-inoremap [<Esc> []<left>
-inoremap {<Esc> {}<left>
 
 nnoremap <C-w> va{zf
 inoremap <C-w> <Esc>va{zfo
